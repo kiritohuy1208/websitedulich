@@ -1,0 +1,37 @@
+{
+  "name": "mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon main.js",
+    "debug": "node --inspect main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/storage-blob": "^12.6.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.4.1",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.12.11",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.6.2",
+    "nodemon": "^2.0.7",
+    "sharp": "^0.28.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.3.1"
+  }
+}

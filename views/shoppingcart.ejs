@@ -1,0 +1,59 @@
+<div class="shopping-cart">
+ 
+    <div class="column-labels">
+      <label class="product-image">Image</label>
+      <label class="product-details">Product</label>
+      <label class="product-price"></label>
+      <label class="product-quantity"></label>
+      <label class="product-removal">Remove</label>
+      <label class="product-line-price">Total</label>
+    </div>
+   
+    <% if(ttgh){%>
+        <% var grandtotal = 0 %>
+        <% ttgh.forEach(sp=>{  %>
+            <%  grandtotal += sp.soluong*sp.dongia %>
+            <form action='/shoppingcart/capnhatgiohang' method="POST">
+            <div class="product">
+            <div class="product-image">
+                <img src="<%=sp.hinh%>">
+            </div>
+            <div class="product-details">
+                <div class="product-title"><%=sp.tenhoa%></div>
+                <p class="product-description"> It has a lightweight, breathable mesh upper with forefoot cables for a locked-down fit.</p>
+            </div>
+            <div class="product-price"><%=sp.dongia%></div>
+            <div class="product-quantity">
+                <input type="number" name='soluong' value="<%=sp.soluong%>" >
+               
+            </div>
+            <div class="product-removal">
+                <a class="remove-product" href="/shoppingcart/remove/<%= sp.mahoa%>">
+                <!-- <button class="remove-product"> -->
+                  Remove
+                <!-- </button> -->
+                </a>
+            </div>
+            <div class="product-line-price"><%=sp.dongia*sp.soluong%></div>
+            </div>
+   
+        <%})%>
+    <div class="totals">
+      
+      <div class="totals-item totals-item-total">
+        <label>Tổng cộng</label>
+        <div class="totals-value" id="cart-total"><%=notifycart.tongtien%></div>
+      </div>
+    </div>
+    
+      
+        <button  type= submit class="checkout">Cập nhật giỏ hàng</button>
+        </form>
+        <a href="/shoppingcart/checkout">
+          <button  class="checkout">Checkout</button>
+        </a>
+  
+   <%} else{%>
+        <h2>Không có sản phẩm</h2>
+    <%}%>
+  </div>

@@ -1,0 +1,59 @@
+
+
+  <form action="/admin/themhoa?_method=PUT" method="POST"  enctype="multipart/form-data" name="form1">
+    <table width="100%" style="margin: 10px auto;"border="1px solid black align="center" cellpadding="1" cellspacing="1"  bgcolor="">
+      <tr bgcolor="black" >
+        <td colspan="2"><div align="center" style="color:white"class="style4"> THÊM BÓ HOA MỚI </div></td>
+      </tr>
+      <tr>
+        <td width="26%"><p class="style10">&nbsp;Tên bó hoa: </p></td>
+        <td width="74%"><label>
+          <input name="ten_hoa" value="<%= product.tenhoa%>" type="text" id="ten_hoa" size="35">
+        </label></td>
+      </tr>
+      <tr>
+        <td><p class="style10">&nbsp;Loại hoa:</p></td>
+        <td><label>
+          <select name="loai" id="loai">
+            <% if(loaihoa){%>
+                <% loaihoa.forEach(motloaihoa=>{%>
+                    <% if(product.maloai == motloaihoa.maloai){%>
+                        <option selected value='<%=motloaihoa.maloai%>'><%= motloaihoa.tenloai%></option>
+                    <%}else{%>
+                        <option value='<%=motloaihoa.maloai%>'><%= motloaihoa.tenloai%></option>
+            <%}})}%>
+          </select>
+         
+         
+        </label></td>
+      </tr>
+      <tr>
+        <td><p class="style10">&nbsp;Thành phần: </p></td>
+        <td><label>
+          <textarea value="<%= product.mota%>" name="mo_ta" cols="35" id="mo_ta"></textarea>
+        </label></td>
+      </tr>
+      <tr>
+        <td><p class="style10">&nbsp;Đơn giá </p></td>
+        <td><label>
+          <input name="gia_ban" value="<%= product.giaban%>" type="text" id="gia_ban">
+        </label></td>
+      </tr>
+      <tr>
+        <td><p class="style10">&nbsp;Hình bó hoa </p></td>
+        <td><label>
+          <input name="images" type="file"  size="45" multiple>
+        </label></td>
+      </tr>
+      <tr>
+        <td height="35" colspan="2"><p align="center">
+          <label>
+          <input type="submit" name="Submit" value="Thêm bó hoa mới" />
+          </label>
+        </p></td>
+      </tr>
+    </table>
+  </form>
+ 
+
+

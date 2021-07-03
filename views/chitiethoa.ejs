@@ -1,0 +1,48 @@
+
+ 
+    <div class="container">
+        <% if(useData.length !=0){%>
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1">
+							  <img width="200px" src="<%= useData[0].fileLinks[0]%>" /></div>
+					
+						</div>
+						
+					</div>
+					<div class="details col-md-6">
+						<h3 class="product-title"><%= useData[0].tenhoa%></h3>
+						<div class="rating">
+							<div class="stars">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
+							<span class="review-no">41 reviews</span>
+						</div>
+						<p class="product-description">
+                            <%= useData[0].mota%>
+                        </p>
+						<h4 class="price">current price: <span><%= useData[0].giaban%></span></h4>
+					
+						
+						<div class="action">
+							<a href="/shoppingcart/addtocart/?muahoa=<%= useData[0].mahoa%>&tenhoa=<%= useData[0].tenhoa%>&dongia=<%= useData[0].giaban%>&maloai=<%= useData[0].maloai%>&tenloai=<%= useData[0].maloai%>&hinh=<%= useData[0].hinh%>" class="btn btn-primary">Add To Cart</a>
+							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <%} else{%>
+            <tr>
+                <td colspan="7">No data Found</td>
+            </tr>
+            <%}%>
+	</div>

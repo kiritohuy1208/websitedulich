@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mhloaihoa</title>
+</head>
+<body>
+    <div class='table-data'>
+        <table border='1'>
+            <tr>
+                <th>STT</th>
+                <th>Mã loại hoa</th>
+                <th>Tên loại hoa</th>
+            </tr>
+            <% if(useData.length !=0){
+                 var i= 1; 
+                 useData.forEach(function(data){%>
+            <tr>
+                <td><%=i%></td>
+                <td><%= data.maloai%></td>
+                <td><a href="/hoa/<%= data.maloai%>"><%= data.tenloai%></a></td>
+            </tr>
+            <% i++;%>
+            <%})} else{%>
+                <tr>
+                    <td colspan="7">No data Found</td>
+                </tr>
+                <%}%>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+
+   <% if(useData.length !=0){
+    
+    useData.forEach(function(data){%>
+       
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+            <a href='/hoa/chitiet/<%= data.mahoa%>'>
+                <img src="<%= data.fileLinks[0]%>" class="card-img-top" alt="<%= data.tenhoa%>">
+         </a>
+          
+            <div class="card-body">
+            <h5 class="card-title"><%= data.tenhoa%></h5>
+            <p class="card-text"><%= data.gia%></p>
+            <a href="/addtocart/?muahoa=<%= data.mahoa%>&tenhoa=<%= data.tenhoa%>&dongia=<%= data.giaban%>&maloai=<%= data.maloai%>&tenloai=<%= data.maloai%>&hinh=<%= data.hinh%>" class="btn btn-primary">Add To Cart</a>
+            </div>
+        
+        </div>
+        </div>
+       
+
+
+<%})} else{%>
+   <tr>
+       <td colspan="7">No data Found</td>
+   </tr>
+   <%}%>
+
+  

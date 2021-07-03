@@ -1,0 +1,92 @@
+<!-- <div class='container' '>
+    <form id="form1" name="form1" method="post" action="/login">
+        <tr>
+          <td colspan="2"><div align="center" class="style5">          Đăng nhập</div></td>
+          </tr>
+        <tr>
+          <td width="46%"><p class="style10">Tên đăng nhập: </p></td>
+          <td width="54%"><span class="style10">
+            <label>
+              <input name="ten_dn" type="text" id="ten_dn" size="15" />
+              </label>
+          </span> </td>
+        </tr>
+        <tr>
+          <td><p class="style10">Mật khẩu: </p></td>
+          <td><span class="style10">
+            <label>
+              <input name="mat_khau" type="password" id="mat_khau" size="15" />
+              </label>
+          </span></td>
+        </tr>
+        
+          <td colspan="2"><div align="center">
+            <label>
+            <input type="submit" name="Submit" value="Đăng nhập" />
+            </label>
+          </div></td>
+          </tr>
+      </form>
+</div> -->
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!--  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<div class="wrapper fadeInDown">
+ 
+  <div id="formContent" heigth="500px">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <h2 style="color: black">Đăng nhập</h2>
+
+    <!-- Login Form -->
+   <form method='POST' action='/login'>
+      <input type="text" id="username" class="fadeIn second" name="ten_dn" placeholder="login">
+      <input type="text" id="password" class="fadeIn third" name="mat_khau" placeholder="password">
+      <input type='submit' style="margin:20px auto" " class="fadeIn fourth" value="Log In">
+  </form>
+    <!-- Remind Passowrd -->
+   
+
+  </div>
+</div>
+<script>
+  // function setCookie(name,value,days) {
+  //   var expires = "";
+  //   if (days) {
+  //       var date = new Date();
+  //       date.setTime(date.getTime() + (days*24*60*60*1000));
+  //       expires = "; expires=" + date.toUTCString();
+  //   }
+  //   document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  // }
+  // function getCookie(name) {
+  //     var nameEQ = name + "=";
+  //     var ca = document.cookie.split(';');
+  //     for(var i=0;i < ca.length;i++) {
+  //         var c = ca[i];
+  //         while (c.charAt(0)==' ') c = c.substring(1,c.length);
+  //         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  //     }
+  //     return null;
+  // }
+
+  // function login(){
+  //   $.ajax({
+  //     url: '/login',
+  //     type: 'POST',
+  //     data:{
+  //       ten_dn:$('#username').val(),
+  //       mat_khau: $('#password').val()
+  //     }
+  //   }).then(data=>{
+  //     setCookie('token',data.token,1)
+  //   })
+  //   .catch(err=>{
+  //     console.log(err)
+  //   })  
+  // }
+</script>
