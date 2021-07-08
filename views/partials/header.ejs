@@ -20,7 +20,7 @@
               <% if(loaihoa){%>
                 <% loaihoa.forEach(motloaihoa=>{%>
 
-                     <a class="dropdown-item" href="/hoa/<%= motloaihoa.maloai%>"><%= motloaihoa.tenloai%></a>
+                     <a class="dropdown-item" href="/hoa/<%= motloaihoa.id%>"><%= motloaihoa.tenloai%></a>
               
               <%})}%>
             </div>
@@ -30,7 +30,7 @@
             <a href="/shoppingcart" class="notification">
               <span> <i class="fas fa-cart-plus"></i></span>
               <% if(notifycart){%>
-                <span class="badge"><%=notifycart.soluong %> </span>
+                <span class="badge"><%=notifycart %> </span>
                 <%}else{%>
                 <span class="badge">0</span>
               <%}%>

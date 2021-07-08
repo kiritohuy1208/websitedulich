@@ -17,9 +17,7 @@
           <select name="loai" id="loai">
             <% if(loaihoa){%>
                 <% loaihoa.forEach(motloaihoa=>{%>
-                    <option value='<%=motloaihoa.maloai%>'><%= motloaihoa.tenloai%></option>
-                    
-              
+                    <option value='<%=motloaihoa.id%>'><%= motloaihoa.tenloai%></option>
               <%})}%>
           </select>
          

@@ -52,12 +52,25 @@ const verifytoken = async function (req,res,next){
 const accessToken = async function(req,res,next){
     tendn = req.body.ten_dn
     matkhau = req.body.mat_khau
-    var kh = await khachhang.login(tendn,matkhau)
-    token= jwt.sign({_id:kh._id},'signature',{expiresIn:'1h'})
-    res.cookie("token", token);
-    next()
+    try{
+           
+            var kh = await khachhang.login(tendn,matkhau)
+            if(!kh){
+                req.flash('error',"Đăng nhập không thành công")
+                return res.redirect('/login')
+            }else{
+                req.userId = kh._id
+                token= jwt.sign({_id:kh._id},'signature',{expiresIn:'1h'})
+                res.cookie("token", token);
+                next()
+            }
+    }catch(err){
+        console.log(err)
+        req.flash('error',"Đăng nhập không thành công")
+        return res.redirect('/login')
+    }
+   
 }
-
 module.exports={
     verifytoken,
     accessToken,

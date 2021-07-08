@@ -1,8 +1,9 @@
 var express= require('express')
 var router = express.Router()
-// var loaihoa= require('../controllers/loaihoa')
-var Loaihoa= require('../models/loaihoa')
 var khachhang = require('../controllers/khachhang')
+const LoaiHoarepository = require('../repository/productType')
+// const Cart = require("../models/cart");
+const indexrepository =require('../repository/index')
 async function dangky(req,res,user){
     try{
         await khachhang.register(user)
@@ -13,22 +14,6 @@ async function dangky(req,res,user){
         res.redirect('/register')
     }
 }
-function Hienthigiohang(req){
-    var giohang = req.session.giohang 
-    var ttgh={
-        soluong: 0,
-        tongtien: 0
-    }
-    if(giohang){
-        for(i=0;i<giohang.length;i++){
-           
-            ttgh.tongtien += giohang[i].dongia*giohang[i].soluong
-        }
-        ttgh.soluong = giohang.length
-    }
-    return ttgh
-}
-
 router.post('/',(req,res)=>{
     var body = req.body
     var user = {
@@ -40,12 +25,11 @@ router.post('/',(req,res)=>{
         email: body.email
     }
     dangky(req,res,user)
-   
 })
 router.get('/',async(req,res)=>{
     let loaihoa
-    loaihoa= await Loaihoa.select()
-    var notifycart= Hienthigiohang(req)
+    loaihoa= await LoaiHoarepository.select()
+    var notifycart= indexrepository.Hienthigiohang(req)
     user = req.user
     res.render('register',{user:user,loaihoa:loaihoa,notifycart:notifycart})
 })

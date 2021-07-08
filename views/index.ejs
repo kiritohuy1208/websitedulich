@@ -12,7 +12,8 @@
             <div class="card-body">
             <h5 class="card-title"><%= data.tenhoa%></h5>
             <p class="card-text"><%= data.giaban%></p>
-            <a href="/shoppingcart/addtocart/?muahoa=<%= data.mahoa%>&tenhoa=<%= data.tenhoa%>&dongia=<%= data.giaban%>&maloai=<%= data.maloai%>&tenloai=<%= data.maloai%>&hinh=<%= data.hinh%>" class="btn btn-primary">Add To Cart</a>
+            <!-- <a href="/shoppingcart/addtocart/?muahoa=<%= data.mahoa%>&tenhoa=<%= data.tenhoa%>&dongia=<%= data.giaban%>&maloai=<%= data.maloai%>&tenloai=<%= data.maloai%>&hinh=<%= data.hinh%>" class="btn btn-primary">Add To Cart</a> -->
+            <a href="/shoppingcart/addtocart/<%= data.id%>" class="btn btn-primary">Add To Cart</a>
             <%if(user.role == 1){%>
             <button class='btn btn-danger'>edit</button>
             <%}%>

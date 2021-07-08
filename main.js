@@ -1,6 +1,8 @@
 var express = require('express')
 var app = express()
-var db = require('./config/database')
+var dbConnect = require('./config/database')
+// const morgan = require('morgan')
+const cors = require('cors')
 const expressLayout = require('express-ejs-layouts')
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -13,6 +15,8 @@ app.set('views',__dirname + '/views')
 app.set('layout', 'layout')
 app.set('view engine','ejs')
 var publicDir = require('path').join(__dirname,'/public')
+// app.use(morgan('dev'))
+app.use(cors())
 app.use(expressLayout)
 app.use(express.static(publicDir))
 app.use(express.json())
@@ -24,11 +28,10 @@ app.use(session({
     saveUninitialized: true,
     secret: '1234567abc',
     store: MongoStore.create({    
-        mongoUrl: 'mongodb+srv://HuyTo1208:quanghuy1208@cluster0.66wio.mongodb.net/quanlybanhoa?retryWrites=true&w=majority',
-        ttl: 14 * 24 * 60 * 60,
+        mongoUrl: 'mongodb://localhost:27017/quanlybanhoa',
         autoRemove: 'native' 
     }),
-    cookie:{maxAge: 14 * 24 * 60 * 60}
+    // cookie:{maxAge: 14 * 24 * 60 * 60}
 }))
 app.use(flash());
 app.use(function(req, res, next){

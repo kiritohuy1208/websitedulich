@@ -8,6 +8,7 @@ var router = express.Router()
 // }
 router.get('/',function(req,res,next){
     try {
+        req.session.giohang = null;
         res.clearCookie("token");
         // res.clearCookie("user");
         res.redirect('/');

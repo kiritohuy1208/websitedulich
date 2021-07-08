@@ -1,10 +1,10 @@
 var express= require('express')
 var router = express.Router()
 var loaihoa= require('./../controllers/loaihoa')
-var Loaihoa= require('../models/loaihoa')
-const helper = require('../middleware/upload');
-var Hoa = require('../models/hoa')
 
+const LoaiHoarepository = require('../repository/productType')
+const Hoarepository = require('../repository/product')
+const helper = require('../middleware/upload');
 const fs = require('fs')
 const util = require('util')
 const unlinkFile = util.promisify(fs.unlink)
@@ -13,34 +13,18 @@ const uploadMultiple = helper.upload.fields([{
     maxCount: 4
 }])
 const {verifytokenadmin} = require('../middleware/auth')
+const indexrepository = require('../repository/index')
 // -----------------------
-function Hienthigiohang(req){
-    var giohang = req.session.giohang 
-    var ttgh={
-        soluong: 0,
-        tongtien: 0
-    }
-   
-    if(giohang){
-        for(i=0;i<giohang.length;i++){
-           
-            ttgh.tongtien += giohang[i].dongia*giohang[i].soluong
-        }
-        ttgh.soluong = giohang.length
-    }
-    return ttgh
-}
+
 
 router.post('/themhoa',uploadMultiple,async (req,res)=>{
     var mahoa = 0
-    var dataHoa = await Hoa.select()
+    var dataHoa = await Hoarepository.select()
     if(dataHoa){
         mahoa = (parseInt(dataHoa[dataHoa.length-1].mahoa)+1).toString()
     }else{
         mahoa = '1'
     }
-  
-  
     const listFileName = [];
     for (let file of req.files.images) {
         listFileName.push(file.filename);
@@ -58,7 +42,7 @@ router.post('/themhoa',uploadMultiple,async (req,res)=>{
    
 	var newHoa = {mahoa:mahoa,maloai:body.loai,tenhoa:body.ten_hoa,giaban:body.gia_ban,hinh:hinh,mota:body.mo_ta}
     try{
-        await Hoa.saveHoa(newHoa)
+        await Hoarepository.saveHoa(newHoa)
         res.redirect('/')
     }
 	catch(err){
@@ -68,8 +52,8 @@ router.post('/themhoa',uploadMultiple,async (req,res)=>{
 })
 
 router.get('/',verifytokenadmin,async(req,res)=>{
-    loaihoa= await Loaihoa.select()
-    var notifycart= Hienthigiohang(req)
+    loaihoa= await LoaiHoarepository.select()
+    var notifycart= indexrepository.Hienthigiohang(req)
     user = req.user
     if(user){
         res.render('admin_upload',{user:user,loaihoa:loaihoa,notifycart:notifycart})
