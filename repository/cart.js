@@ -205,10 +205,11 @@ exports.removeItemsCart= async (req,res)=>{
             cart = await new Cart(req.session.giohang)
         }
         // tìm item với productId
-        let itemIndex = cart.items.findIndex((p)=> p.productId = productId)
+        // console.log(cart)
+        let itemIndex = cart.items.findIndex((p)=> p.productId == productId)
         if(itemIndex > -1){
             cart.totalQty -= cart.items[itemIndex].qty
-            cart. totalCost -= cart.items[itemIndex].price
+            cart.totalCost -= cart.items[itemIndex].price
             await cart.items.remove({_id: cart.items[itemIndex]._id})
         }
         req.session.giohang = cart

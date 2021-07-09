@@ -9,7 +9,7 @@ const MongoStore = require('connect-mongo');
 var cookieParser = require('cookie-parser')
 const flash = require('connect-flash')
 const dotenv = require('dotenv')
-
+const methodOverrride = require('method-override')
 // -------------------------------------------middleware-------------------------------------------------------------------
 app.set('views',__dirname + '/views')
 app.set('layout', 'layout')
@@ -38,13 +38,14 @@ app.use(function(req, res, next){
     res.locals.message = req.flash();
     next();
 });
-
+app.use(methodOverrride('_method'))
 // sendmail
 const sendmailRouter = require('./routes/sendmail')
 app.use('/xulydonhang',sendmailRouter)
 // -----------------------Admin-----------------------------------------
 const routerAdmin = require('./routes/admin')
 app.use('/admin',routerAdmin)
+
 // -----------------------User Profile-----------------------------------
 const routerProfile = require('./routes/profile')
 app.use('/profile',routerProfile)

@@ -1,9 +1,9 @@
 
 
-  <form action="/admin/themhoa?_method=PUT" method="POST"  enctype="multipart/form-data" name="form1">
+  <form action="/admin/edit/<%=product.id%>?_method=PUT" method="POST"  enctype="multipart/form-data" name="form1">
     <table width="100%" style="margin: 10px auto;"border="1px solid black align="center" cellpadding="1" cellspacing="1"  bgcolor="">
       <tr bgcolor="black" >
-        <td colspan="2"><div align="center" style="color:white"class="style4"> THÊM BÓ HOA MỚI </div></td>
+        <td colspan="2"><div align="center" style="color:white"class="style4"> SỬA BÓ HOA  </div></td>
       </tr>
       <tr>
         <td width="26%"><p class="style10">&nbsp;Tên bó hoa: </p></td>
@@ -18,9 +18,9 @@
             <% if(loaihoa){%>
                 <% loaihoa.forEach(motloaihoa=>{%>
                     <% if(product.maloai == motloaihoa.maloai){%>
-                        <option selected value='<%=motloaihoa.maloai%>'><%= motloaihoa.tenloai%></option>
+                        <option selected value='<%=motloaihoa.id%>'><%= motloaihoa.tenloai%></option>
                     <%}else{%>
-                        <option value='<%=motloaihoa.maloai%>'><%= motloaihoa.tenloai%></option>
+                        <option value='<%=motloaihoa.id%>'><%= motloaihoa.tenloai%></option>
             <%}})}%>
           </select>
          
@@ -30,7 +30,7 @@
       <tr>
         <td><p class="style10">&nbsp;Thành phần: </p></td>
         <td><label>
-          <textarea value="<%= product.mota%>" name="mo_ta" cols="35" id="mo_ta"></textarea>
+          <textarea name="mo_ta" cols="35" id="mo_ta"><%= product.mota%></textarea>
         </label></td>
       </tr>
       <tr>
@@ -46,14 +46,21 @@
         </label></td>
       </tr>
       <tr>
-        <td height="35" colspan="2"><p align="center">
+        <td height="25" colspan="2"><p align="center">
           <label>
-          <input type="submit" name="Submit" value="Thêm bó hoa mới" />
+          <input type="submit" name="Submit" value="Sửa bó hoa " />
           </label>
         </p></td>
       </tr>
     </table>
+    <a href="/" class="btn btn-danger">
+      Cancel
+    </a>
+  
   </form>
- 
+  
+   
+   
+
 
 

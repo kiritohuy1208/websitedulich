@@ -13,6 +13,17 @@
             <h5 class="card-title"><%= data.tenhoa%></h5>
             <p class="card-text"><%= data.gia%></p>
             <a href="/addtocart/?muahoa=<%= data.mahoa%>&tenhoa=<%= data.tenhoa%>&dongia=<%= data.giaban%>&maloai=<%= data.maloai%>&tenloai=<%= data.maloai%>&hinh=<%= data.hinh%>" class="btn btn-primary">Add To Cart</a>
+            <%if(user.role == 1){%>
+                <button class='btn btn-dark'>
+                <i class="far fa-edit"></i>
+            </button>
+            </a>
+            <a href="/admin/delete/<%=data.id%>">
+                <button class='btn btn-danger'>
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                </a>
+            <%}%>
             </div>
         
         </div>

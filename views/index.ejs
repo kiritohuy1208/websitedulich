@@ -6,18 +6,27 @@
   <%  hoa.forEach(function(data){%>
         <div class="card" style="width: 15rem;">
             <a href='/hoa/chitiet/<%= data.mahoa%>'>
-                <img width="200px" src="<%= data.fileLinks[0]%>" class="card-img-top" alt="<%= data.tenhoa%>">
+                <img width="270px" height="310px" src="<%= data.fileLinks[0]%>" class="card-img-top" alt="<%= data.tenhoa%>">
          </a>
           
             <div class="card-body">
-            <h5 class="card-title"><%= data.tenhoa%></h5>
-            <p class="card-text"><%= data.giaban%></p>
-            <!-- <a href="/shoppingcart/addtocart/?muahoa=<%= data.mahoa%>&tenhoa=<%= data.tenhoa%>&dongia=<%= data.giaban%>&maloai=<%= data.maloai%>&tenloai=<%= data.maloai%>&hinh=<%= data.hinh%>" class="btn btn-primary">Add To Cart</a> -->
-            <a href="/shoppingcart/addtocart/<%= data.id%>" class="btn btn-primary">Add To Cart</a>
-            <%if(user.role == 1){%>
-            <button class='btn btn-danger'>edit</button>
-            <%}%>
-        </div>
+                <h5 class="card-title"><%= data.tenhoa%></h5>
+                <p class="card-text"><%= data.giaban%></p>
+                <!-- <a href="/shoppingcart/addtocart/?muahoa=<%= data.mahoa%>&tenhoa=<%= data.tenhoa%>&dongia=<%= data.giaban%>&maloai=<%= data.maloai%>&tenloai=<%= data.maloai%>&hinh=<%= data.hinh%>" class="btn btn-primary">Add To Cart</a> -->
+                <a href="/shoppingcart/addtocart/<%= data.id%>" class="btn btn-primary">Add to cart</a>
+                <%if(user.role == 1){%>
+                <a href="/admin/edit/<%=data.id%>">
+                <button class='btn btn-dark'>
+                    <i class="far fa-edit"></i>
+                </button>
+                </a>
+                <form action="/admin/delete/<%=data.id%>?_method=DELETE" method="POST">
+                    <button style="margin-top: 10px;" onclick="return confirm('Bạn muốn xóa sp <%=data.tenhoa%> ?')"  class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+                <%}%>
+            </div>
         </div>
 
 
