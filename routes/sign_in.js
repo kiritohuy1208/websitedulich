@@ -40,7 +40,7 @@ router.post('/', accessToken, async (req,res,next)=>{
                     const itemIndex = cart.items.findIndex((p)=>p.productId == itemgiohang.productId)
                     if(itemIndex > -1){
                         cart.items[itemIndex].qty++
-                        cart.items[itemIndex].price = cart.items[itemIndex].qty * parseInt(product.giaban)
+                        // cart.items[itemIndex].price = cart.items[itemIndex].qty * parseInt(product.giaban)
                         cart.totalQty ++
                         cart.totalCost += parseInt(product.giaban) 
                     }else{
