@@ -12,17 +12,18 @@
             <div class="card-body">
             <h5 class="card-title"><%= data.tenhoa%></h5>
             <p class="card-text"><%= data.gia%></p>
-            <a href="/addtocart/?muahoa=<%= data.mahoa%>&tenhoa=<%= data.tenhoa%>&dongia=<%= data.giaban%>&maloai=<%= data.maloai%>&tenloai=<%= data.maloai%>&hinh=<%= data.hinh%>" class="btn btn-primary">Add To Cart</a>
+            <a href="/shoppingcart/addtocart/<%= data.id%>" class="btn btn-primary">Add to cart</a>
             <%if(user.role == 1){%>
+            <a href="/admin/edit/<%=data.id%>">
                 <button class='btn btn-dark'>
-                <i class="far fa-edit"></i>
+                        <i class="far fa-edit"></i>
             </button>
             </a>
-            <a href="/admin/delete/<%=data.id%>">
-                <button class='btn btn-danger'>
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-                </a>
+                <form action="/admin/delete/<%=data.id%>?_method=DELETE" method="POST">
+                    <button style="margin-top: 10px;" onclick="return confirm('Bạn muốn xóa sp <%=data.tenhoa%> ?')"  class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
             <%}%>
             </div>
         

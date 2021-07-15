@@ -74,7 +74,7 @@ exports.handleCartVer2 = async (req,res)=>{
             // if sản phẩm tồn tại trong cart, cập nhật lại số lượng quantity
             if(itemIndex > -1){
                 cart.items[itemIndex].qty++
-                cart.items[itemIndex].price = cart.items[itemIndex].qty * parseInt(product.giaban)
+                // cart.items[itemIndex].price +=  parseInt(product.giaban)*cart.items[itemIndex].qty
                 cart.totalQty ++
                 cart.totalCost += parseInt(product.giaban) 
             }else{
@@ -101,7 +101,8 @@ exports.handleCartVer2 = async (req,res)=>{
             }
           
             req.session.giohang = cart
-           return res.redirect(req.headers.referer)
+        //    return res.redirect(req.headers.referer)
+        res.redirect('/')
         }catch(err){
             console.log(err.message)
            return res.redirect('/')
@@ -163,11 +164,14 @@ exports.updateCart = async (req,res)=>{
           } else if (req.session.giohang){
             cart = await new Cart(req.session.giohang);
           }
-    //Cập nhật số lượng sp   
-    let totalCost=0, totalQty=0
+    //Cập nhật số lượng sp  
+    if(cart){
+        cart.totalCost= 0
+    }
+    let totalCost=0 , totalQty=0
     for(i=0;i<cart.items.length;i++){
         cart.items[i].qty = Number(req.body.soluong[i])
-        totalCost +=   cart.items[i].qty*  cart.items[i].price
+        totalCost += cart.items[i].price*cart.items[i].qty
         totalQty += cart.items[i].qty 
     }
     cart.totalCost = totalCost
@@ -209,7 +213,7 @@ exports.removeItemsCart= async (req,res)=>{
         let itemIndex = cart.items.findIndex((p)=> p.productId == productId)
         if(itemIndex > -1){
             cart.totalQty -= cart.items[itemIndex].qty
-            cart.totalCost -= cart.items[itemIndex].price
+            cart.totalCost -= cart.items[itemIndex].price*cart.items[itemIndex].qty
             await cart.items.remove({_id: cart.items[itemIndex]._id})
         }
         req.session.giohang = cart
