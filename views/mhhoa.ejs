@@ -11,7 +11,7 @@
           
             <div class="card-body">
             <h5 class="card-title"><%= data.tenhoa%></h5>
-            <p class="card-text"><%= data.gia%></p>
+            <p class="card-text"><%= data.giaban%></p>
             <a href="/shoppingcart/addtocart/<%= data.id%>" class="btn btn-primary">Add to cart</a>
             <%if(user.role == 1){%>
             <a href="/admin/edit/<%=data.id%>">

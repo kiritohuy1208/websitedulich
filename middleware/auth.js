@@ -25,7 +25,7 @@ const verifytokenadmin = async function (req,res,next){
     }
     catch(err){
         res.redirect('/logout')
-        console.log(err)
+        // console.log(err)
     }
 }
 const verifytoken = async function (req,res,next){
@@ -46,7 +46,7 @@ const verifytoken = async function (req,res,next){
     }
     catch(err){
         res.redirect('/logout')
-       console.log(err)
+    //    console.log(err)
     }
 }
 const accessToken = async function(req,res,next){
